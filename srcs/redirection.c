@@ -6,13 +6,13 @@
 /*   By: jacens <jacens@student.le-101.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/14 11:55:35 by jacens            #+#    #+#             */
-/*   Updated: 2020/02/17 14:08:42 by jacens           ###   ########lyon.fr   */
+/*   Updated: 2020/02/17 16:11:10 by jacens           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minishell.h"
 
-static void	ft_change_first_caract(t_list **list)
+static t_list		*ft_change_first_caract(t_list **list)
 {
 	t_list	*carac;
 	t_list	*commande;
@@ -32,52 +32,72 @@ static void	ft_change_first_caract(t_list **list)
 		file = tmp->next;
 		space = file->next;
 		commande = space->next;
-		tmp = commande->next;
-		file->next = tmp;
+		file->next = commande->next;
 		commande->next = space;
 		space->next = carac;
 		*list = commande;
+		return (commande);
 	}
+	return (NULL);
 }
 
-static void	ft_resize_cmd_for_dir(t_list **list, t_list *tmp)
+static t_list		*ft_resize_cmd_for_dir(t_list **list, t_list *t,
+					t_list *ret)
 {
 	t_list	*back;
 	t_list	*prev;
 
-	if ((ft_count_nb_redir(tmp) > 0 || ft_count_nb_redir2(tmp) > 0)
-	&& !(((t_tag *)(tmp->content))->tag != -62 &&
-	((t_tag *)(tmp->content))->tag != -63 &&
-	((t_tag *)(tmp->content))->tag != -60))
-		ft_change_first_caract(list);
+	if ((ft_count_nb_redir(t) > 0 || ft_count_nb_redir2(t) > 0)
+	&& !(((t_tag *)(t->content))->tag != -62 &&
+	((t_tag *)(t->content))->tag != -63
+	&& ((t_tag *)(t->content))->tag != -60))
+		ret = ft_change_first_caract(list);
 	back = *list;
 	prev = back;
 	while (back)
 	{
-		tmp = prev;
+		t = prev;
 		while (back && ((t_tag *)(back->content))->tag != -59)
 			back = back->next;
-		ft_remove_all_multi_dir(ft_count_nb_redir(tmp->next), tmp);
-		ft_remove_all_multi_dirbis(ft_count_nb_redir(tmp->next), tmp);
-		ft_remove_all_multi_dir2(ft_count_nb_redir2(tmp->next), tmp);
-		ft_remove_all_multi_dir2bis(ft_count_nb_redir2(tmp->next), tmp);
+		ft_remove_all_multi_dir(ft_count_nb_redir(t->next), t);
+		ft_remove_all_multi_dirbis(ft_count_nb_redir(t->next), t);
+		ft_remove_all_multi_dir2(ft_count_nb_redir2(t->next), t);
+		ft_remove_all_multi_dir2bis(ft_count_nb_redir2(t->next), t);
 		prev = back;
 		back && ((t_tag *)(back->content))->tag == -59 ? back = back->next : 0;
 	}
+	if (ret)
+		return (ret);
+	return (NULL);
 }
 
-int			ft_verif_redir(t_list *list, t_list **command_list, t_list **env,
-						char *com)
+static int			ft_free_more(t_list *lst)
+{
+	t_list	*n;
+
+	if (lst)
+	{
+		n = lst->next;
+		n->next = NULL;
+		lst->next = NULL;
+		ft_lstdelone(n, free);
+		ft_lstdelone(lst, free);
+	}
+	return (1);
+}
+
+int					ft_verif_redir(t_list *list, t_list **command_list,
+					t_list **env, char *com)
 {
 	t_list	*tmp;
+	t_list	*free;
 	int		i;
 
+	free = NULL;
 	if (ft_check_redir(command_list))
-	{
-		ft_printf_fd(2, "\033[1;31mminishell\033[0m: error open file\n");
-		return (1);
-	}
-	ft_resize_cmd_for_dir(command_list, *command_list);
+		return (ft_printf_fd(2, "\033[1;31mminishell\033[0m: error open \
+		file\n"));
+	free = ft_resize_cmd_for_dir(command_list, *command_list, NULL);
 	tmp = *command_list;
 	if (((t_tag *)(tmp->content))->tag == -62 ||
 		((t_tag *)(tmp->content))->tag == -63 ||
@@ -91,6 +111,7 @@ int			ft_verif_redir(t_list *list, t_list **command_list, t_list **env,
 		com[i] = ft_tolower(com[i]);
 	list = tmp->next;
 	if (command_cmp(list, command_list, env, com))
-		return (1);
+		return (ft_free_more(free));
+	ft_free_more(free);
 	return (0);
 }

@@ -27,7 +27,7 @@ lib:
 
 $(NAME): $(OBJ) $(DIR_LIB)libftprintf.a
 	@echo "\033[0;32m  [UPDATE]\033[0m \033[1;30m CREATED:\033[0m \033 \033[0m \033[0;36m minishell\033[0m"
-	@gcc -o $(NAME) $(OBJ) $(DIR_LIB)libftprintf.a
+	@gcc -g -o $(NAME) $(OBJ) $(DIR_LIB)libftprintf.a
 
 clean:
 	@rm -f $(OBJ)

@@ -6,7 +6,7 @@
 /*   By: jacens <jacens@student.le-101.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/04 13:17:22 by jacens            #+#    #+#             */
-/*   Updated: 2020/02/17 11:21:54 by jacens           ###   ########lyon.fr   */
+/*   Updated: 2020/02/17 15:03:10 by jacens           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,29 +15,12 @@
 int			pwd_command(t_list *command_list)
 {
 	char	*buf;
-	int		i;
 
-	i = 5;
-	if (command_list)
-	{
-		if (((t_tag *)(command_list->content))->tag != -32 &&
-		((t_tag *)(command_list->content))->tag != -59)
-		{
-			ft_printf_fd(2, "pwd: too many arguments\n");
-			return (1);
-		}
-		if (((t_tag *)(command_list->content))->tag == -32 &&
-		command_list->next)
-			if (((t_tag *)(command_list->next->content))->tag != -59)
-			{
-				ft_printf("pwd: too many arguments\n");
-				return (1);
-			}
-	}
 	if (!(buf = ft_get_pwd()))
 		return (1);
 	ft_printf("%s\n", buf);
 	free(buf);
+	(void)command_list;
 	return (0);
 }
 
