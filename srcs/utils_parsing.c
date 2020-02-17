@@ -48,7 +48,7 @@ static int	catch_command3(char *line, int *i, char *c, t_tag **command)
 			(*i)++;
 			break ;
 		}
-		if (line[*i] == '\\' && line[(*i) + 1] != '$')
+		if (!(*c) && line[*i] == '\\' && line[(*i) + 1] != '$')
 			(*i)++;
 		if (!((*command)->str = ft_append((*command)->str, &line[*i], 1)))
 			return (1);
