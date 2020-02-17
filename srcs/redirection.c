@@ -6,18 +6,32 @@
 /*   By: jacens <jacens@student.le-101.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/14 11:55:35 by jacens            #+#    #+#             */
-/*   Updated: 2020/02/17 16:11:10 by jacens           ###   ########lyon.fr   */
+/*   Updated: 2020/02/17 16:39:05 by jacens           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minishell.h"
 
-static t_list		*ft_change_first_caract(t_list **list)
+static t_list		*ft_change_first_caract_more(t_list *carac,
+				t_list *tmp, t_list **list)
 {
-	t_list	*carac;
 	t_list	*commande;
 	t_list	*space;
 	t_list	*file;
+
+	file = tmp->next;
+	space = file->next;
+	commande = space->next;
+	file->next = commande->next;
+	commande->next = space;
+	space->next = carac;
+	*list = commande;
+	return (commande);
+}
+
+static t_list		*ft_change_first_caract(t_list **list)
+{
+	t_list	*carac;
 	t_list	*tmp;
 
 	carac = *list;
@@ -26,18 +40,12 @@ static t_list		*ft_change_first_caract(t_list **list)
 	(((t_tag *)(tmp->next->next->next->content))->tag == -62
 	|| ((t_tag *)(tmp->next->next->next->content))->tag == -63 ||
 	((t_tag *)(tmp->next->next->next->content))->tag == -60))
-		tmp = tmp->next->next->next;
-	if (tmp->next->next != NULL)
 	{
-		file = tmp->next;
-		space = file->next;
-		commande = space->next;
-		file->next = commande->next;
-		commande->next = space;
-		space->next = carac;
-		*list = commande;
-		return (commande);
+		tmp = tmp->next->next->next;
+		carac = tmp;
 	}
+	if (tmp->next->next != NULL)
+		return (ft_change_first_caract_more(carac, tmp, list));
 	return (NULL);
 }
 
