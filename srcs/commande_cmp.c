@@ -6,7 +6,7 @@
 /*   By: jacens <jacens@student.le-101.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/16 20:15:47 by jacens            #+#    #+#             */
-/*   Updated: 2020/02/21 00:36:11 by jacens           ###   ########lyon.fr   */
+/*   Updated: 2020/02/21 00:40:51 by jacens           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,11 +23,9 @@ static int	command_cmp_do(t_list *list, t_list **command_list, t_list **env,
 		ret = cd_command(list, *env);
 	else if (!ft_strncmp(com, "env", 4))
 		ret = env_command(list, *env);
-	else if (!ft_strncmp(com, "echo", 5) ||
-			!ft_strncmp(com, "/bin/echo", 10))
+	else if (!ft_strncmp(com, "echo", 5))
 		ret = echo_command(list, 1, *env);
-	else if (!ft_strncmp(com, "pwd", 4) ||
-			!ft_strncmp(com, "/bin/pwd", 9))
+	else if (!ft_strncmp(com, "pwd", 4))
 		ret = pwd_command(list);
 	else if (!ft_strncmp(com, "export", 7))
 		ret = export_command(list, *env);
