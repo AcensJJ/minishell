@@ -6,7 +6,7 @@
 /*   By: jacens <jacens@student.le-101.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/16 20:15:47 by jacens            #+#    #+#             */
-/*   Updated: 2020/02/17 14:14:05 by jacens           ###   ########lyon.fr   */
+/*   Updated: 2020/02/21 00:36:11 by jacens           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ static int	command_cmp_do(t_list *list, t_list **command_list, t_list **env,
 	int		ret;
 
 	ret = 1;
+	list ? list = list->next : 0;
 	if (!ft_strncmp(com, "cd", 3))
 		ret = cd_command(list, *env);
 	else if (!ft_strncmp(com, "env", 4))
@@ -103,22 +104,24 @@ int			command_cmp(t_list *list, t_list **command_list, t_list **env,
 int			next_command_pipe(t_list *list, t_list **command_list, t_list **env,
 		char *com)
 {
-	t_list	**copy;
+	t_list	*copy;
 	t_list	*tmp;
 	int		ret;
 
-	ret = 0;
+	ret = -1;
 	tmp = *command_list;
 	while (tmp && ((t_tag *)(tmp->content))->tag != -59 &&
 			((t_tag *)(tmp->content))->tag != -124)
-		tmp = tmp->next;
+		tmp = skip_redir_go_next(tmp);
 	if (tmp && ((t_tag *)(tmp->content))->tag == -124)
 	{
-		tmp = tmp->next;
+		copy = tmp->next;
+		tmp = skip_redir_go_next(tmp);
 		com = ((t_tag *)(tmp->content))->str;
-		copy = &tmp;
-		list = tmp->next;
-		ret = command_cmp(list, copy, env, com);
+		while (com[++ret])
+			com[ret] = ft_tolower(com[ret]);
+		list = tmp;
+		ret = command_cmp(list, &copy, env, com);
 	}
 	return (ret);
 }
