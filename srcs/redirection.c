@@ -6,13 +6,13 @@
 /*   By: jacens <jacens@student.le-101.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/14 11:55:35 by jacens            #+#    #+#             */
-/*   Updated: 2020/02/21 00:37:15 by jacens           ###   ########lyon.fr   */
+/*   Updated: 2020/02/21 04:15:58 by jacens           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minishell.h"
 
-static t_list		*skip_redir_go_next_com(t_list *lst)
+t_list				*skip_redir_go_next_com(t_list *lst)
 {
 	while (lst && (((t_tag *)(lst->content))->tag == -62 ||
 	((t_tag *)(lst->content))->tag == -63 ||

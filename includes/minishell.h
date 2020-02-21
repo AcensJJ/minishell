@@ -6,7 +6,7 @@
 /*   By: jacens <jacens@student.le-101.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/22 17:02:23 by jacens            #+#    #+#             */
-/*   Updated: 2020/02/21 00:07:32 by jacens           ###   ########lyon.fr   */
+/*   Updated: 2020/02/21 04:16:17 by jacens           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,4 +89,5 @@ void		ft_change_order_more(t_list *sp, t_list *redir,
 			t_list *redirsp, t_list *file);
 char		*love_the_norme(char *str, char *tmp);
 t_list		*skip_redir_go_next(t_list *lst);
+t_list		*skip_redir_go_next_com(t_list *lst);
 #endif
