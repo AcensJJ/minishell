@@ -6,7 +6,7 @@
 /*   By: jacens <jacens@student.le-101.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/16 20:15:47 by jacens            #+#    #+#             */
-/*   Updated: 2020/02/21 04:43:50 by jacens           ###   ########lyon.fr   */
+/*   Updated: 2020/02/21 04:45:14 by jacens           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,8 @@ static int	command_cmp_do(t_list *list, t_list **command_list, t_list **env,
 
 	ret = 1;
 	list ? list = skip_redir_to_go_next(list) : 0;
-	if ((!list && !com)
-	|| (!ft_strncmp(com, ">", 2) || !ft_strncmp(com, "<", 2) ||
-		!ft_strncmp(com, ">>", 3)))
+	if ((!list && !com) || (!ft_strncmp(com, ">", 2) ||
+	!ft_strncmp(com, "<", 2) || !ft_strncmp(com, ">>", 3)))
 		ret = 0;
 	else if (!ft_strncmp(com, "cd", 3))
 		ret = cd_command(list, *env);
