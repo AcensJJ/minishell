@@ -6,7 +6,7 @@
 /*   By: jacens <jacens@student.le-101.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/16 20:15:47 by jacens            #+#    #+#             */
-/*   Updated: 2020/02/21 04:45:14 by jacens           ###   ########lyon.fr   */
+/*   Updated: 2020/02/21 04:47:48 by jacens           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -119,7 +119,7 @@ int			next_command_pipe(t_list *list, t_list **command_list, t_list **env,
 		while (com[++ret])
 			com[ret] = ft_tolower(com[ret]);
 		list = tmp;
-		ret = command_cmp(list, &copy, env, com);
+		ret = ft_verif_redir(list, &copy, env, com);
 	}
 	return (ret);
 }
