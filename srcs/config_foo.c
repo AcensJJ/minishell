@@ -6,11 +6,17 @@
 /*   By: jacens <jacens@student.le-101.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/11 14:03:12 by jacens            #+#    #+#             */
-/*   Updated: 2020/02/21 00:11:32 by jacens           ###   ########lyon.fr   */
+/*   Updated: 2020/02/24 12:25:02 by jacens           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minishell.h"
+
+int			free_int(void *str)
+{
+	free(str);
+	return (1);
+}
 
 static int	ft_change_value_str(t_list *lst, t_list *env, char **foo)
 {

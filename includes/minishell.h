@@ -6,7 +6,7 @@
 /*   By: jacens <jacens@student.le-101.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/22 17:02:23 by jacens            #+#    #+#             */
-/*   Updated: 2020/02/21 04:42:11 by jacens           ###   ########lyon.fr   */
+/*   Updated: 2020/02/24 12:40:22 by jacens           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,4 +91,5 @@ char		*love_the_norme(char *str, char *tmp);
 t_list		*skip_redir_go_next(t_list *lst);
 t_list		*skip_redir_go_next_com(t_list *lst);
 t_list		*skip_redir_to_go_next(t_list *lst);
+int			free_int(void *str);
 #endif
