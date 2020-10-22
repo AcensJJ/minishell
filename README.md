@@ -6,7 +6,7 @@ Description
 
 L'objectif de ce projet est de créer un simple shell.
 
-Project en collaboration avec <a href="https://github.com/ereynier">Estéban Reynier</a> <a href="https://profile.intra.42.fr/users/ereynier">ereynier</a>.
+Project en collaboration avec <a href="https://github.com/ereynier">Estéban Reynier</a> (<a href="https://profile.intra.42.fr/users/ereynier">ereynier</a>).
 
 
 # Partie Obligatoire
