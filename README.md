@@ -11,7 +11,7 @@ Project en collaboration avec <a href="https://github.com/ereynier">Estéban Rey
 
 # Partie Obligatoire
 
-![Capture](https://user-images.githubusercontent.com/45235527/96900125-09600300-1492-11eb-9e2a-39831a49f01d.PNG)
+![Capture](https://user-images.githubusercontent.com/45235527/97051231-1b6b9f80-157f-11eb-9f2d-0962d44f0bc9.PNG)
 
 Votre shell doit :
 
