@@ -25,10 +25,10 @@ Votre shell doit :
   - `unset` sans aucune option
   - `env` sans aucune option ni argument
   - `exit` sans aucune option
-- `;` dans la ligne de commande doit séparer les commandes
-- `’` et " doivent marcher comme dans bash, à l’exception du multiligne.
-- Les redirections `<`, `>` et `“>>”` doivent marcher comme dans bash, à l’exception des aggrégations de fd
-- Pipes `|` doivent marcher comme dans bash
+- <strong>;</strong> dans la ligne de commande doit séparer les commandes
+- <strong>’</strong> et " doivent marcher comme dans bash, à l’exception du multiligne.
+- Les redirections <strong><</strong>, <strong>></strong> et <strong>“>>”</strong> doivent marcher comme dans bash, à l’exception des aggrégations de fd
+- Pipes <strong>|</strong> doivent marcher comme dans bash
 - Les variables d’environnement `($ suivi de caractères)` doivent marcher comme dans bash.
-- `$?` doit marcher comme dans bash
+- <strong>$?</strong> doit marcher comme dans bash
 - `ctrl-C`, `ctrl-D` et `ctrl-\` doivent afficher le même résultat que dans bash.
