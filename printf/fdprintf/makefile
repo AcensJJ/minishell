@@ -1,15 +1,15 @@
 # **************************************************************************** #
-#                                                           LE - /             #
-#                                                               /              #
-#    makefile                                         .::    .:/ .      .::    #
-#                                                  +:+:+   +:    +:  +:+:+     #
-#    By: jacens <jacens@student.le-101.fr>          +:+   +:    +:    +:+      #
-#                                                  #+#   #+    #+    #+#       #
-#    Created: 2019/10/18 15:41:28 by jacens       #+#   ##    ##    #+#        #
-#    Updated: 2020/02/06 14:03:14 by jacens      ###    #+. /#+    ###.fr      #
-#                                                          /                   #
-#                                                         /                    #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: jacens <jacens@student.42lyon.fr>          +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2019/10/18 15:41:28 by jacens            #+#    #+#              #
+#    Updated: 2021/01/14 15:32:52 by jacens           ###   ########lyon.fr    #
+#                                                                              #
 # **************************************************************************** #
+
 
 NAME    =   fdprintf.a
 
@@ -20,7 +20,7 @@ HEADER  =   includes
 
 LFLAGS  =   -I $(HEADER)
 
-SRCS    =	$(shell find . -name "*.c")
+SRCS    =	$(shell find srcs -name "*.c")
 
 OBJ     =   $(SRCS:.c=.o)
 

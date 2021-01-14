@@ -1,15 +1,15 @@
 # **************************************************************************** #
-#                                                           LE - /             #
-#                                                               /              #
-#    makefile                                         .::    .:/ .      .::    #
-#                                                  +:+:+   +:    +:  +:+:+     #
-#    By: jacens <jacens@student.le-101.fr>          +:+   +:    +:    +:+      #
-#                                                  #+#   #+    #+    #+#       #
-#    Created: 2019/10/18 15:41:28 by jacens       #+#   ##    ##    #+#        #
-#    Updated: 2020/02/06 14:02:23 by jacens      ###    #+. /#+    ###.fr      #
-#                                                          /                   #
-#                                                         /                    #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: jacens <jacens@student.42lyon.fr>          +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2019/10/18 15:41:28 by jacens            #+#    #+#              #
+#    Updated: 2021/01/14 15:32:43 by jacens           ###   ########lyon.fr    #
+#                                                                              #
 # **************************************************************************** #
+
 
 NAME    =   libft.a
 
@@ -17,6 +17,7 @@ CC      =   gcc
 CFLAGS  =   -Wall -Wextra -Werror
 HEADER 	=   include/
 LFLAGS  =   -I $(HEADER)
+INCS 	=  $(shell find . -name "*.h")
 
 SRCS 	=  $(shell find . -name "*.c")
 
@@ -28,7 +29,7 @@ $(NAME): $(OBJ)
 	@ar rc $(NAME) $(OBJ)
 	@ranlib $(NAME)
 
-%.o : %.c $(HEADER)
+%.o : %.c $(INCS)
 	@$(CC) $(CFLAGS) $(LFLAGS) -c $< -o $@
 
 clean:
