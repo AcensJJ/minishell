@@ -11,7 +11,7 @@ L'objectif de ce projet est de créer un simple shell.
 
 # Partie Obligatoire
 
-![Capture](https://user-images.githubusercontent.com/45235527/97051231-1b6b9f80-157f-11eb-9f2d-0962d44f0bc9.PNG)
+![Sujet](https://user-images.githubusercontent.com/45235527/97051231-1b6b9f80-157f-11eb-9f2d-0962d44f0bc9.PNG)
 
 Votre shell doit :
 
