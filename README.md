@@ -8,7 +8,9 @@ L'objectif de ce projet est de créer un simple shell.
 
 > *Project en collaboration avec <a href="https://github.com/ereynier">Estéban Reynier</a> (<a href="https://profile.intra.42.fr/users/ereynier">ereynier</a>).*
 
-![minishell](https://user-images.githubusercontent.com/45235527/104728667-88827180-5737-11eb-82b3-51b2e42b79ee.gif)
+<p align="center" width="100%">
+   <img src="https://user-images.githubusercontent.com/45235527/104728925-edd66280-5737-11eb-9730-d3f94be6a5b6.gif" width="60% height="50%" />
+</p>
 
 # Partie Obligatoire
 
