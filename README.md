@@ -8,6 +8,7 @@ L'objectif de ce projet est de créer un simple shell.
 
 > *Project en collaboration avec <a href="https://github.com/ereynier">Estéban Reynier</a> (<a href="https://profile.intra.42.fr/users/ereynier">ereynier</a>).*
 
+![minishell](https://user-images.githubusercontent.com/45235527/104728667-88827180-5737-11eb-82b3-51b2e42b79ee.gif)
 
 # Partie Obligatoire
 
